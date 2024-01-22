@@ -1,0 +1,16 @@
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Streamlit cache and data directories
+.streamlit/
+.data/
