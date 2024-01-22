@@ -68,12 +68,10 @@ class InquirePDF:
             docs = knowledge_base.similarity_search(prompt)
             response = chain.invoke({'input_documents':docs, 'question':prompt})
 
-            print(cb)
-
         source_pages = [(doc.metadata['source'], doc.metadata['page']) for doc in docs]
         source_pages = sorted(list(set(source_pages)))
 
-        return response['output_text'], source_pages
+        return response['output_text'], source_pages, cb
 
     def _extract_text_from_pdfs(self):
 

@@ -116,7 +116,7 @@ def main():
     st.markdown(':speech_balloon: **Step 4:** Ask your question')
 
     prompt = st.text_area(label='Answers will be generated based on the provided PDF.',
-                          value='What is Professional Skepticism in auditing?',
+                          value='',
                           placeholder='What is Professional Skepticism in auditing?',
                           max_chars=300)
 
@@ -126,8 +126,11 @@ def main():
             st.error('Please enter your question.')
 
         if ('API_KEY' in st.session_state) & (st.session_state['trained']):
-            api = st.session_state.api
-            response, source_pages = api.answer_question(prompt=prompt)
+
+            with st.spinner('Generating output...'):
+
+                api = st.session_state.api
+                response, source_pages, cb = api.answer_question(prompt=prompt)
 
             with st.container():
                 st.write(response)
@@ -142,6 +145,10 @@ def main():
                 
                 source_page_info = f"Sources: {', '.join(temp)}"
                 st.write(source_page_info)
+            
+            with st.expander("See used tokens"):
+                st.write(cb)
+
         else:
             st.error('Please ensure that you have provided an API key, uploaded a PDF file and trained the model.')
 
