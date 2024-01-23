@@ -1,14 +1,13 @@
 # Streamlit
 import streamlit as st
 
-# InquireGPT
+# InquirePDF
 from ask_pdf import InquirePDF
 
 def main():
 
     # Initialize session state
     api = InquirePDF()
-    st.session_state['InquireGPT'] = api
 
     if 'API_KEY' not in st.session_state:
         st.session_state['API_KEY'] = ''
@@ -36,7 +35,7 @@ def main():
             type='password'
         )
 
-        if openai_api_key:
+        if openai_api_key: # if value provided
             st.session_state['API_KEY'] = openai_api_key
     
     st.header('Ask & Receive: GPT-Powered PDF Inquiry Assistant', 
@@ -55,9 +54,9 @@ def main():
                                     type='pdf', 
                                     accept_multiple_files=True,
                                     label_visibility='visible')
-    if uploaded_pdf:
+    if uploaded_pdf: # if file uploaded
         st.session_state['file_uploaded'] = True
-    else:
+    else: # if file not uploaded or deleted
         # clear session state
         st.session_state['file_uploaded'] = False
         st.session_state['trained'] = False
