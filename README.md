@@ -7,7 +7,7 @@ This repository hosts an interactive web application built using **Streamlit** a
 [**Access the Web Application**](https://ask-pdf-kngsoomin.streamlit.app/)
 
 ### Example Use Case:
-If you have multiple audit regulation PDFs and need to find the definition of 'auditor's professional skepticism,' simply upload your PDFs and submit your query. The tool will generate the results, including the source document's page.
+If you have multiple audit regulation PDFs and need to find the definition of "auditor's professional skepticism", simply upload your PDFs and submit your query. The tool will generate the results, including the source document's page.
 
 ### Technology Stack:
 - [Streamlit](https://streamlit.io/)
